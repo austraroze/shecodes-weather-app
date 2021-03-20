@@ -78,7 +78,7 @@ function showTemperature(response) {
   );
 }
 
-function retrieveLocation(positon) {
+function retrieveLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "ee85c255dfdb83fbd986e0133d61ab75";
@@ -99,7 +99,7 @@ function search(event) {
   let biggerElement = document.querySelector(".bigger");
   let precipitationElement = document.querySelector("#precipitation");
   let windElement = document.querySelector("#windspeed");
-  let humidityElement = document.querySelector("#humdity");
+  let humidityElement = document.querySelector("#humidity");
   let iconElement = document.querySelector("#icon");
   let apiKey = "ee85c255dfdb83fbd986e0133d61ab75";
   let units = "metric";
@@ -107,7 +107,7 @@ function search(event) {
   let apiUrl = `${apiEndpoint}q=${cityInput}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
   cityElement.innerHTML = cityInput.value;
-  countryElement.innerHTML = ;
+  countryElement.innerHTML = " ";
   biggerElement.innerHTML = " ";
   precipitationElement.innerHTML = " ";
   windElement.innerHTML = " ";
@@ -123,7 +123,7 @@ function search(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-function displayFahrenheitTemperature {
+function displayFahrenheitTemperature() {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temp");
 
