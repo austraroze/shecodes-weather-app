@@ -116,9 +116,9 @@ function (event) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   }
-  
   windElement.innerHTML = "Wind speed" + Math.round(response.weather.wind.speed) + "m/s";
   humidityElement.innerHTML = "Humidity " + (response.data.main.humidity) + "%";
+}
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
@@ -147,11 +147,3 @@ fahrenheitLink.addEventListener = ("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-/* Search engine
-API integration =
-unit conversion ~
-wind speed ~
-precipitation ~
-weather description
-weather icon ~ */
