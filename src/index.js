@@ -59,7 +59,7 @@ function showPosition(position) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city-span").innerHTML = response.data.name;
 }
 
 function getCurrentPosition(event) {
@@ -71,7 +71,7 @@ let button = document.querySelector("#currentLocation");
 button.addEventListener("click", getCurrentPosition);
 
 function showTemperature(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city-span").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -92,7 +92,7 @@ navigator.geolocation.getCurrentPosition(retrieveLocation);
 function search(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search").value;
-  let cityElement = document.querySelector("#city");
+  let cityElement = document.querySelector("#city-span");
   let countryElement = document.querySelector("#country");
   let biggerElement = document.querySelector(".bigger");
   let precipitationElement = document.querySelector("#precipitation");
