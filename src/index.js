@@ -106,7 +106,8 @@ function search(event) {
   let apiUrl = `${apiEndpoint}q=${cityInput}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
   cityElement.innerHTML = cityInput.value;
-  countryElement.innerHTML = "";
+
+  countryElement.innerHTML = "?";
   biggerElement.innerHTML = "?";
   precipitationElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.weather.wind.speed);
@@ -148,7 +149,7 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 /* Search engine
 API integration =
 unit conversion ~
-wind speed 
-precipitation
+wind speed ~
+precipitation ~
 weather description
 weather icon ~ */
