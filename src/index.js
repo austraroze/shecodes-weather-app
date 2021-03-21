@@ -117,9 +117,6 @@ function search(event) {
   );
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
-
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temp");
@@ -138,6 +135,9 @@ function displayCelsiusTemperature(event) {
 }
 
 let celsiusTemperature = null;
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener = ("click", displayFahrenheitTemperature);
