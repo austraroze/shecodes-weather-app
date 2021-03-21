@@ -112,7 +112,7 @@ function search(event) {
   windElement.innerHTML = " ";
   humidityElement.innerHTML = " ";
   iconElement.setAttribute(
-    "src",
+    "alt",
     `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`
   );
 }
@@ -144,3 +144,11 @@ fahrenheitLink.addEventListener = ("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+/* Search engine
+API integration =
+unit conversion ~
+wind speed 
+precipitation
+weather description
+weather icon ~ */
