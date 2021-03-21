@@ -61,7 +61,6 @@ function showPosition(position) {
   axios.get(apiUrl).then(showTemperature);
   document.querySelector("#city").innerHTML = response.data.name;
 }
-//???????????????
 
 function getCurrentPosition(event) {
   event.preventDefault();
@@ -90,7 +89,6 @@ function retrieveLocation(position) {
 
 navigator.geolocation.getCurrentPosition(retrieveLocation);
 
-//
 function search(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search").value;
@@ -118,8 +116,6 @@ function search(event) {
     `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`
   );
 }
-
-/* FINISH ENTERING .innerHTML info */
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
