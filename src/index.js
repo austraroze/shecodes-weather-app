@@ -105,7 +105,7 @@ function search(event) {
   axios.get(apiUrl).then(showTemperature);
   cityElement.innerHTML = cityInput.value;
 
-  countryElement.innerHTML = /*???*/;
+  /*countryElement.innerHTML = ???*/
   /*biggerElement.innerHTML = "?";*/
   if (response.data.rain!==undefined) {
     document.querySelector("#precipitation").innerHTML = response.data.rain["1h"]+"mm/h"
