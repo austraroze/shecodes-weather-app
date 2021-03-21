@@ -87,7 +87,7 @@ function retrieveLocation(position) {
 
 navigator.geolocation.getCurrentPosition(retrieveLocation);
 
-function (event) {
+function search(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search").value;
   let cityElement = document.querySelector("#city-span");
