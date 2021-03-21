@@ -109,7 +109,7 @@ function search(event) {
   countryElement.innerHTML = " ";
   biggerElement.innerHTML = " ";
   precipitationElement.innerHTML = " ";
-  windElement.innerHTML = " ";
+  windElement.innerHTML = "Math.round(response.data.wind.speed)";
   humidityElement.innerHTML = " ";
   iconElement.setAttribute(
     "alt",
