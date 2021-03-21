@@ -79,3 +79,10 @@ body {
   margin-left: 260px;
   font-size: small;
 }
+.temp .active {
+  color: black;
+  cursor: default;
+}
+.temp .active:hover {
+  text-decoration: none;
+}

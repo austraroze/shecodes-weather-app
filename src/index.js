@@ -101,6 +101,7 @@ function search(event) {
   let windElement = document.querySelector("#windspeed");
   let humidityElement = document.querySelector("#humidity");
   let iconElement = document.querySelector("#icon");
+  celsiusTemperature = response.weather.main.temp;
   let apiKey = "ee85c255dfdb83fbd986e0133d61ab75";
   let units = "metric";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
@@ -140,6 +141,16 @@ function displayCelsiusTemperature(event) {
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+function displayFahrenheitTemperature(event) {
+event.preventDefault();
+celsiusLink.classList.add("active");
+fahrenheitLink.classList.remove("active");
+let temperatureElement = document.querySelector("#temp");
+temperatureElement.innerHTML = Math.round(fahrrenheitTemperature);
+}
+
+let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener = ("click", displayFahrenheitTemperature);
