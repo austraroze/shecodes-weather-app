@@ -72,9 +72,7 @@ button.addEventListener("click", getCurrentPosition);
 
 function showTemperature(response) {
   document.querySelector("#city-span").innerHTML = response.data.name;
-  document.querySelector("#temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#temp").innerHTML = Math.round(response.data.main.temp);
 }
 
 function retrieveLocation(position) {
@@ -89,7 +87,7 @@ function retrieveLocation(position) {
 
 navigator.geolocation.getCurrentPosition(retrieveLocation);
 
-function search(event) {
+function (event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search").value;
   let cityElement = document.querySelector("#city-span");
@@ -107,16 +105,20 @@ function search(event) {
   axios.get(apiUrl).then(showTemperature);
   cityElement.innerHTML = cityInput.value;
 
-  countryElement.innerHTML = "?";
-  biggerElement.innerHTML = "?";
-  precipitationElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.weather.wind.speed);
-  humidityElement.innerHTML = "?";
-  iconElement.setAttribute(
-    "alt",
-    `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`
+  countryElement.innerHTML = /*???*/;
+  /*biggerElement.innerHTML = "?";*/
+  if (response.data.rain!==undefined) {
+    document.querySelector("#precipitation").innerHTML = response.data.rain["1h"]+"mm/h"
+  } else {
+    document.querySelector("#precipitation").innerHTML="no rain";
+    document.querySelector("#icon").setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-}
+  }
+  
+  windElement.innerHTML = "Wind speed" + Math.round(response.weather.wind.speed) + "m/s";
+  humidityElement.innerHTML = "Humidity " + (response.data.main.humidity) + "%";
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
