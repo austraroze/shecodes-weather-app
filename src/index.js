@@ -23,6 +23,14 @@ let days = [
   "Saturday"
 ];
 
+let cityElement = document.querySelector("#city-span");
+let countryElement = document.querySelector("#country");
+let biggerElement = document.querySelector(".bigger");
+let precipitationElement = document.querySelector("#precipitation");
+let windElement = document.querySelector("#windspeed");
+let humidityElement = document.querySelector("#humidity");
+let iconElement = document.querySelector("#icon");
+
 let date = document.querySelector("#date");
 let time = document.querySelector("#time");
 let day = document.querySelector("#day");
@@ -73,6 +81,18 @@ button.addEventListener("click", getCurrentPosition);
 function showTemperature(response) {
   document.querySelector("#city-span").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(response.data.main.temp);
+  if (response.data.rain!==undefined) {
+    document.querySelector("#precipitation").innerHTML = response.data.rain["1h"]+"mm/h"
+  } else {
+    document.querySelector("#precipitation").innerHTML="no rain";
+    document.querySelector("#icon").setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  }
+  console.log(response);
+  windElement.innerHTML = "Wind speed" + Math.round(response.data.wind.speed) + "m/s";
+  humidityElement.innerHTML = "Humidity " + (response.data.main.humidity) + "%";
 }
 
 function retrieveLocation(position) {
@@ -89,35 +109,19 @@ navigator.geolocation.getCurrentPosition(retrieveLocation);
 
 function search(event) {
   event.preventDefault();
+  //celsiusTemperature = response.weather.main.temp;
   let cityInput = document.querySelector("#search").value;
-  let cityElement = document.querySelector("#city-span");
-  let countryElement = document.querySelector("#country");
-  let biggerElement = document.querySelector(".bigger");
-  let precipitationElement = document.querySelector("#precipitation");
-  let windElement = document.querySelector("#windspeed");
-  let humidityElement = document.querySelector("#humidity");
-  let iconElement = document.querySelector("#icon");
-  celsiusTemperature = response.weather.main.temp;
   let apiKey = "ee85c255dfdb83fbd986e0133d61ab75";
   let units = "metric";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiUrl = `${apiEndpoint}q=${cityInput}&appid=${apiKey}&units=${units}`;
+  console.log(apiUrl);
   axios.get(apiUrl).then(showTemperature);
   cityElement.innerHTML = cityInput.value;
 
   /*countryElement.innerHTML = ???*/
   /*biggerElement.innerHTML = "?";*/
-  if (response.data.rain!==undefined) {
-    document.querySelector("#precipitation").innerHTML = response.data.rain["1h"]+"mm/h"
-  } else {
-    document.querySelector("#precipitation").innerHTML="no rain";
-    document.querySelector("#icon").setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  }
-  windElement.innerHTML = "Wind speed" + Math.round(response.weather.wind.speed) + "m/s";
-  humidityElement.innerHTML = "Humidity " + (response.data.main.humidity) + "%";
+  
 }
 
 function displayFahrenheitTemperature(event) {
