@@ -58,7 +58,6 @@ time.innerHTML = `${hours}:${minutes}`;
 day.innerHTML = `${currentDay}`;
 year.innerHTML = `${currentYear}`;
 
-// problem in the function below
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -117,11 +116,7 @@ function search(event) {
   let apiUrl = `${apiEndpoint}q=${cityInput}&appid=${apiKey}&units=${units}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showTemperature);
-  cityElement.innerHTML = cityInput.value;
-
-  /*countryElement.innerHTML = ???*/
-  /*biggerElement.innerHTML = "?";*/
-  
+  cityElement.innerHTML = cityInput.value;  
 }
 
 function displayFahrenheitTemperature(event) {
