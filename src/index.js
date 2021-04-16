@@ -90,8 +90,8 @@ function showTemperature(response) {
   );
   }
   console.log(response);
-  windElement.innerHTML = "Wind speed" + Math.round(response.data.wind.speed) + "m/s";
-  humidityElement.innerHTML = "Humidity " + (response.data.main.humidity) + "%";
+  windElement.innerHTML = "wind speed " + Math.round(response.data.wind.speed) + "m/s";
+  humidityElement.innerHTML = "humidity " + (response.data.main.humidity) + "%";
 }
 
 function retrieveLocation(position) {
